@@ -1,0 +1,63 @@
+using System;
+using System.Linq;
+using System.Collections.Generic;
+
+class Employee
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+
+    public int DeptId { get; set; }
+
+}
+
+class Department
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+}
+class Program
+{
+    public static void Main()
+    {
+        var employees = new List<Employee>
+        {
+            new Employee{Id = 1,Name = "prasanth",DeptId = 1 },
+            new Employee{Id = 2,Name = "Justin",DeptId = 2 },
+            new Employee{Id = 3,Name = "sachin",DeptId = 2 },
+            new Employee{Id = 4,Name = "gowtham"  }
+        };
+
+
+        var departments = new List<Department>
+        {
+            new Department { Id = 1, Name = "HR"  },
+            new Department { Id = 2, Name = "IT" },
+            new Department { Id = 3, Name = "Finance" }
+        };
+        var result = from emp in employees
+                     from dept in departments
+                     select new { emp.Name, Department = dept.Name };
+
+        foreach (var item in result)
+        {
+            Console.WriteLine($"{item.Name} - {item.Department}");
+            
+        }
+
+    }
+}
+
+/*
+prasanth - HR
+prasanth - IT
+prasanth - Finance
+Justin - HR
+Justin - IT
+Justin - Finance
+sachin - HR
+sachin - IT
+sachin - Finance
+gowtham - HR
+gowtham - IT
+gowtham - Finance  */
