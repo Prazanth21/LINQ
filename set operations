@@ -1,0 +1,45 @@
+//Distinct 
+int[] numbers = {1,2,3,3,4,5,5,3,6 };
+
+var distinctnumber = numbers.Distinct();
+
+Console.WriteLine(string.Join(",",distinctnumber));
+Console.WriteLine();
+
+//Union
+int[] set1 = {1,2,3,4,5 };
+int[] set2 = {4,5,6,7,8 };
+
+var unionset = set1.Union(set2);
+
+Console.WriteLine(string.Join(",",unionset));
+Console.WriteLine();
+
+//intersect
+
+int[] set11 = {5,4,3,1 };
+int[] set12 = {1,2,3,4,5 };
+
+var intersectnum = set11.Intersect(set12);
+
+Console.WriteLine(string.Join(",",intersectnum));
+Console.WriteLine();
+
+//except
+
+int[] grp1 = { 1, 2, 3, 4 };
+int[] grp2 = { 3, 4, 5,6 };
+
+var exceptnum = grp1.Except(grp2);
+
+Console.WriteLine(string.Join(",",exceptnum));
+Console.WriteLine();
+
+//concat
+
+int[] num1 = {1,2,3,4 };
+int[] num2 = { 4, 5, 6 };
+
+var concat = num1.Concat(num2);
+
+Console.WriteLine(string.Join(",",concat));
