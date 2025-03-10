@@ -1,0 +1,52 @@
+using System;
+using System.Linq;
+using System.Collections.Generic;
+
+class Employee 
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+
+    public int DeptId { get; set; }
+
+}
+
+class Department 
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+}
+class Program
+{
+    public static void Main()
+    {
+        var employees = new List<Employee>
+        {
+            new Employee{Id = 1,Name = "prasanth",DeptId = 1 },
+            new Employee{Id = 2,Name = "Justin",DeptId = 2 },
+            new Employee{Id = 3,Name = "sachin",DeptId = 2 },
+            new Employee{Id = 4,Name = "gowtham",DeptId = 3 }
+        };
+
+
+        var departments = new List<Department>
+        {
+            new Department { Id = 1, Name = "HR" },
+            new Department { Id = 2, Name = "IT" },
+            new Department { Id = 3, Name = "Finance" }
+        };
+        var result = from emp in employees
+                     join dept in departments on emp.DeptId equals dept.Id
+                     select new { emp.Name, Department = dept.Name };
+
+        foreach (var item in result)
+        {
+            Console.WriteLine($"{item.Name} works in {item.Department} department ");
+        }
+    }
+}
+
+/*prasanth works in HR department
+Justin works in IT department
+sachin works in IT department
+gowtham works in Finance department*/
