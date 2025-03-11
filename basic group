@@ -1,0 +1,52 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+class Program
+{
+    static void Main()
+    {
+
+        List<Employee> employees = new List<Employee>
+        {
+            new Employee { Name = "Alice", Department = "IT" },
+            new Employee { Name = "Bob", Department = "HR" },
+            new Employee { Name = "Charlie", Department = "IT" },
+            new Employee { Name = "David", Department = "HR" },
+            new Employee { Name = "Eve", Department = "Finance" }
+        };
+
+       
+        var groupedEmployees = from emp in employees
+                               group emp by emp.Department into deptGroup
+                               select deptGroup;
+
+        foreach (var group in groupedEmployees)
+        {
+            Console.WriteLine($"Department: {group.Key}");
+            foreach (var emp in group)
+            {
+                Console.WriteLine($"  - {emp.Name}");
+            }
+        }
+    }
+}
+
+
+class Employee
+{
+    public string Name { get; set; }
+    public string Department { get; set; }
+}
+
+
+/*Department: IT
+  - Alice
+  - Charlie
+Department: HR
+  - Bob
+  - David
+Department: Finance
+  - Eve
+*/
+
